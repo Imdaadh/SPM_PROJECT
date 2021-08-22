@@ -23,7 +23,7 @@ function UserProducts() {
                 {
                     products.map(product => (
                         <div className="product_card" key={product._id}>
-                            <img src={product.images.url} alt="" />
+                            <img src={product.images.url} alt="image" />
                             <div className="product_box">
                                 <h2 title={product.title}>{product.title}</h2>
                                 <span>${product.price}</span>
