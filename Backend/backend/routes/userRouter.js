@@ -145,40 +145,10 @@ router.get('/logout',async (req, res) =>{
 
 
 
- //updating the cart details
-  router.patch('/addcart', auth,async (req, res) =>{
-    
-        try {
-            const user = await Users.findById(req.user.id)
-            if(!user) return res.status(400).json({msg: "User does not exist."})
 
 
 
-            await Users.findOneAndUpdate({_id: req.user.id}, {
-                cart: req.body.cart
-            })
 
-            return res.json({msg: "Added to cart"})
-        } catch (err) {
-            return res.status(500).json({msg: err.message})
-        }
-
-  })
-
-
-
- // retreiving the customer details 
- router.get('/history',auth, async (req, res) =>{
-    try {
-        const history = await Users.find()
-        res.json(history)
-        
-    } catch (error) {
-        return res.status(500).json({msg: error.message})
-        
-    }
-
- })
 
 
 
