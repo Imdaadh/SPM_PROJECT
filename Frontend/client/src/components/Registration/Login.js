@@ -48,7 +48,7 @@ class Login extends PureComponent {
                         }
                         else if(res.data.role==='adminP'){
                             alert("welcome"+res.data.role)
-                            this.props.history.push('/userProducts')
+                            this.props.history.push('/adminPackages')
                         }
                     }
                 }

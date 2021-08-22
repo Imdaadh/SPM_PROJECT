@@ -41,16 +41,21 @@ class Myheader extends React.Component{
         if (this.state.user==='admin') {
             return (
                 <div>
+                    <li className="menu-active" ><a href="/adminProducts"  style={{marginLeft:-10}}><b><u>Dev Car</u></b></a></li>
+                <div style={{marginLeft:300,marginTop:-30}}>
                     <li><a href="/create_product">ADD Product</a> </li>
                     <li><a href="/create_category">ADD Categories</a> </li>
                     <li><a href="/adminProducts" >Products</a></li>
                     <li><a href="/orderHistory">ORDERS </a></li>
                     <li className="buy-tickets"  onClick={this.doLogout}><a href="/">Logout</a></li>
                 </div>
+                </div>
             )
         } else if(this.state.user==='user') {
             return (
                 <div>
+                    <li className="menu-active" ><a href="/adminProducts"  style={{marginLeft:-90}}><b><u>Dev Car</u></b></a></li>
+                <div style={{marginLeft:80,marginTop:-30}}>
                     <li><a href="#">History</a> </li>
                     <li><a href="/userProducts" >Products</a></li>
                     <li><a href="#">Packages </a></li>
@@ -59,53 +64,34 @@ class Myheader extends React.Component{
                     <li className="buy-tickets"  onClick={this.doLogout}><a href="/">Logout</a></li>
 
                 </div>
+                </div>
             )
         }
         else if(this.state.user==='adminP') {
             return (
                 <div>
+                    <li className="menu-active" ><a href="/adminPackages"  style={{marginLeft:-180}}><b><u>Dev Car</u></b></a></li>
+                    <div style={{marginLeft:300,marginTop:-30}}>
                     <li><a href="/create_package">ADD Package</a> </li>
                     <li><a href="/adminPackages" >Packages</a></li>
                     <li><a href="/orderHistory">ORDERS </a></li>
                     <li className="buy-tickets"  onClick={this.doLogout}><a href="/">Logout</a></li>
                 </div>
-
-
-            )
-        }  else if(this.state.user==='researcher') {
-            return (
-                <div>
-                    <li className="menu-active"><a href="/">Home</a></li>
-                    <li><a href="/aboutUs">About Us</a></li>
-                    <li><a href="/userAddRP"> ADD FILE</a> </li>
-                    <li><a href="/userViewRP"> VIEW FILE</a> </li>
-                    <li className="buy-tickets"  onClick={this.doLogout}><a href="/">Logout</a></li>
-
-                </div>
-
-
-            )
-        } else if(this.state.user==='reviewer') {
-            return (
-                <div>
-                    <li className="menu-active"><a href="#">reviewer UI</a></li>
-                    <li><a href="/ReviewerViewWorkshop"> Workshop</a> </li>
-                    <li><a href="/reviewerViewRP"> RESEARCH PAPER</a> </li>
-                    <li><a href="/reviewerViewTemplate"> TEMPLATES </a> </li>
-                    <li className="buy-tickets"  onClick={this.doLogout}><a href="/">Logout</a></li>
                 </div>
 
 
             )
         }
-
         else {
             return (
-                <div>
 
+                    <div>
+                        <li className="menu-active" ><a href="/"  style={{marginLeft:-90,color:"white"}}><b><u>Dev Car</u></b></a></li>
+                        <div style={{marginLeft:550,marginTop:-30}}>
                     <li><a href="/">Products</a></li>
                     <li className="buy-tickets"><a href="/register">REGISTER</a></li>
                     <li className="buy-tickets"><a href="/login">LOGIN</a></li>
+                </div>
                 </div>
             )
         }
