@@ -14,11 +14,13 @@ import UserProducts from './products/userProducts'
 import Reservation from './Registration/Reservation'
 import ProductsBfrLogin from './products/ProductsBefLogin'
 import Categories from "./categories/Categories";
-import DetailProduct from "./detailProduct/DetailProduct";
 import CreatePackage from "./AddPackage/CreatePackage";
 import AdminViewPackages from "./packages/adminViewPackages";
 import AddPayment from './addPayment/addPayment';
 import ViewPayments from './viewPayment/viewPayment';
+import View_product from "./view_product/view_product";
+
+
 
 
 
@@ -45,7 +47,7 @@ function Pages() {
 
 
             //user products
-            <Route path="/reserve/:id"  component={DetailProduct} />
+            <Route path="/reserve/:id"  component={View_product} />
             <Route path="/userProducts" exact component={UserProducts} />
             <Route path="/reservation" exact component={Reservation} />
 
