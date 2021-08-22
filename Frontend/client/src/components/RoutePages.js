@@ -14,7 +14,6 @@ import UserProducts from './products/userProducts'
 import Reservation from './Registration/Reservation'
 import ProductsBfrLogin from './products/ProductsBefLogin'
 import Categories from "./categories/Categories";
-import DetailProduct from "./detailProduct/DetailProduct";
 import CreatePackage from "./AddPackage/CreatePackage";
 import AdminViewPackages from "./packages/adminViewPackages";
 import AddPayment from './addPayment/addPayment';
