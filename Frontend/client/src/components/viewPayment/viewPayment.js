@@ -1,7 +1,8 @@
 import React , {Component} from "react";
 import axios from 'axios';
 import {Card, Modal,Button,Table} from "react-bootstrap";
-//Table
+import 'bootstrap/dist/css/bootstrap.css';
+//hiiiie
 class viewPayment extends Component{
 
     constructor(props) {
