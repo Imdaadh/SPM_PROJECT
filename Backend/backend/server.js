@@ -41,7 +41,7 @@ mongoose.connect(uri, {
     useUnifiedTopology: true 
 }, err =>{
     if(err) throw err;
-    console.log('Conneced to .......scs xxcsv MoDB')
+    console.log('Conneced to sc.......scs xxcsv MoDB')
 })
 
   
