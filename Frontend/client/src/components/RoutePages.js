@@ -1,4 +1,4 @@
-import React, {useContext} from 'react'
+import React, {useContext, Component} from 'react'
 import {Switch, Route} from 'react-router-dom'
 import Products from './products/Products'
 import Login from './Registration/Login'
@@ -8,7 +8,7 @@ import OrderDetails from './orders/OrderDetails'
 import Cart from './cart/Cart'
 import NotFound from './utils/not_found/NotFound'
 import CreateProduct from './AddProduct/CreateProduct'
-import payment from './payment/payment'
+
 import {GlobalState} from '../GlobalState'
 import UserProducts from './products/userProducts'
 import Reservation from './Registration/Reservation'
@@ -17,6 +17,9 @@ import Categories from "./categories/Categories";
 import DetailProduct from "./detailProduct/DetailProduct";
 import CreatePackage from "./AddPackage/CreatePackage";
 import AdminViewPackages from "./packages/adminViewPackages";
+import AddPayment from './addPayment/addPayment';
+import ViewPayments from './viewPayment/viewPayment';
+
 
 
 
@@ -58,9 +61,16 @@ function Pages() {
 
 
             {/*<Route path="/payment" exact component={isLogged ? payment : NotFound} />*/}
+                <Route path="/addPayment" component={AddPayment}/>
+                <Route path="/getPayments" component={ViewPayments}/>
             <Route path="/login" exact component={Login} />
             <Route path="/register" exact component={Register} />
             <Route path="*" exact component={NotFound} />
+
+            //payments
+
+
+
         </Switch>
     )
 }
