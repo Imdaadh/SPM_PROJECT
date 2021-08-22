@@ -41,7 +41,7 @@ mongoose.connect(uri, {
     useUnifiedTopology: true 
 }, err =>{
     if(err) throw err;
-    console.log('Conneced to sc.......scs xxcsv MoDB')
+    console.log('Conneced to  MoDB')
 })
 
   
@@ -58,5 +58,5 @@ app.use('/api', require('./routes/categoryRouter'))
 
  
 app.listen(port, () => {
-    console.log(`Server is   running  on .....: ${port}`);
+    console.log(`Server is   running  on : ${port}`);
 });
