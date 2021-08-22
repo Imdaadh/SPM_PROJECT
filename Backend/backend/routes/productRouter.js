@@ -78,7 +78,7 @@ router.post('/addProducts',async(req, res) =>{
 router.get('/getProducts',async(req, res) =>{
 
     try {
-        console.log("inside product get")
+
 
         const features = new APIfeatures(Products.find(), req.query)
         .filtering().sorting().paginating()
