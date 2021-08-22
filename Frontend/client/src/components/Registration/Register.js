@@ -6,7 +6,7 @@ import './login.css';
 
 function Register() {
     const [user, setUser] = useState({
-        name:'',number:'' ,address :'',city:'' ,email:'', password: ''
+        name:'',number:'' ,address :'' ,email:'', password: ''
     })
 
 
@@ -44,8 +44,7 @@ function Register() {
                 <input type="text" name="address" required
                        placeholder="address" value={user.address} onChange={onChangeInput} />
 
-                <input type="text" name="city" required
-                       placeholder="city" value={user.city} onChange={onChangeInput} />
+
 
                 <input type="email" name="email" required
                        placeholder="Email" value={user.email} onChange={onChangeInput} />
