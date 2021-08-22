@@ -54,7 +54,10 @@ class Myheader extends React.Component{
                     <li><a href="#">History</a> </li>
                     <li><a href="/userProducts" >Products</a></li>
                     <li><a href="#">Packages </a></li>
+                    <li><a href="/addPayment" >Add Payment</a></li>
+                    <li><a href="/getPayments" >View Payments</a></li>
                     <li className="buy-tickets"  onClick={this.doLogout}><a href="/">Logout</a></li>
+
                 </div>
             )
         }

@@ -53,7 +53,7 @@ app.use('/user', require('./routes/userRouter'))
 app.use('/image', require('./routes/ImageUpload'))
 app.use('/product', require('./routes/productRouter'))
 app.use('/package', require('./routes/packageRouter'))
-app.use('/payment', require('./routes/paymentRouter'))
+app.use('/payment',require('./routes/payment'));
 app.use('/api', require('./routes/categoryRouter'))
 
  
