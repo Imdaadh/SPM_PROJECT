@@ -39,6 +39,7 @@ function DetailProduct() {
                     <p>{detailProduct.content}</p>
 
                     <input type='number' placeholder='enter the number of days' style={{width:500}}/><br />
+                    <input type='date' placeholder='enter the date' style={{width:500}}/><br />
                     <Link to="/cart" className="cart"
                     onClick={() => addCart(detailProduct)}>
                       Reserve
