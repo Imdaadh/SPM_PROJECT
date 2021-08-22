@@ -15,7 +15,7 @@ router.post('/register', async (req, res) =>{
 
     try {
 
-        const {name,number,address,city ,email, password} = req.body;
+        const {name,number,address ,email, password} = req.body;
 
 
         if(number.length != 10) 
@@ -31,7 +31,7 @@ router.post('/register', async (req, res) =>{
         const passwordHash = await bcrypt.hash(password, 10)
        
         const newUser = new Users({
-            name, number,address, city,email,password: passwordHash
+            name, number,address,email,password: passwordHash
         })
 
     
