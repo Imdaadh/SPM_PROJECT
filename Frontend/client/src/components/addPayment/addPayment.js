@@ -1,8 +1,8 @@
 import React, { Component} from 'react';
-
+import 'bootstrap/dist/css/bootstrap.css';
 //import Select from 'react-select';
 import axios from 'axios';
-
+//example
 
 const initialState = {
     cardType:'',
@@ -69,11 +69,12 @@ const initialState = {
 
     render(){
         return(
-
+<div>
+    <center>
             <div className="container">
                 <h1>Add Payment</h1>
                 <form onSubmit={this.onSubmit}>
-                    <div className="mb-3">
+                    <div className="form-group w-50">
                         <label htmlFor="subjectName" className="form-label">Card Type</label>
                         <input
                             type="text"
@@ -85,7 +86,7 @@ const initialState = {
                         />
                     </div>
 
-                    <div className="mb-3">
+                    <div className="form-group w-50">
                         <label htmlFor="subjectName" className="form-label">Card Number</label>
                         <input
                             type="text"
@@ -97,7 +98,7 @@ const initialState = {
                         />
                     </div>
 
-                    <div className="mb-3">
+                    <div className="form-group w-50">
                         <label htmlFor="subjectAmount" className="form-label">Card Name</label>
                         <input
                             type="text"
@@ -109,10 +110,10 @@ const initialState = {
                         />
                     </div>
 
-                    <div className="mb-3">
+                    <div className="form-group w-50">
                         <label htmlFor="subjectAmount" className="form-label">CVV</label>
                         <input
-                            type="number"
+                            type="text"
                             className="form-control"
                             id="subjectAmount"
                             name="cvv"
@@ -121,7 +122,7 @@ const initialState = {
                         />
                     </div>
 
-                    <div className="mb-3">
+                    <div className="form-group w-50">
                         <label htmlFor="subjectAmount" className="form-label">Expiry Date</label>
                         <input
                             type="number"
@@ -142,7 +143,8 @@ const initialState = {
                     <button type="submit" className="btn btn-primary">Submit</button>
                 </form>
             </div>
-
+    </center>
+</div>
         )
     }
 

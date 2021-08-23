@@ -6,7 +6,7 @@ const fileUpload = require('express-fileupload')
 const cookieParser = require('cookie-parser')
 //const path = require('path')
 const nodemailer = require('nodemailer');
-
+//hello
 
 
 
@@ -41,7 +41,7 @@ mongoose.connect(uri, {
     useUnifiedTopology: true 
 }, err =>{
     if(err) throw err;
-    console.log('Conneced to  MoDB')
+    console.log('Conneced to  MoDBBBBB')
 })
 
   
