@@ -23,32 +23,16 @@ function CreateProduct() {
     const state = useContext(GlobalState)
     const [images, setImages] = useState(false)
     const [loading, setLoading] = useState(false)
-    const [products] = state.productsAPI.products
+
     const [categories] = state.categoriesAPI.categories
 
 
 
     const history = useHistory()
-    const param = useParams()
-
-    useEffect(() => {
-        if(param.id){
-            setOnEdit(true)
-            products.forEach(product => {
-                if(product._id === param.id) {
-                    setProduct(product)
-                    setImages(product.images)
-                }
-            })
-        }else{
-            setOnEdit(false)
-            setProduct(initialState)
-            setImages(false)
-        }
-    }, [param.id, products])
 
 
-    const [onEdit, setOnEdit] = useState(false)
+
+
 
 
 
@@ -104,11 +88,9 @@ function CreateProduct() {
         try {
             if(!images) return alert("No Image Upload")
 
-            if(onEdit){
-                await axios.put(`/product/updateProducts/${product._id}`, {...product, images})
-            }else{
+
                 await axios.post('/product/addProducts', {...product, images})
-            }
+
 
             history.push("/adminProducts")
         } catch (err) {
@@ -138,7 +120,7 @@ function CreateProduct() {
                 <div className="row">
                     <label htmlFor="product_id">Vehicle ID</label>
                     <input type="text" name="product_id" id="product_id" required
-                    value={product.product_id} onChange={handleChangeInput} disabled={onEdit} />
+                    value={product.product_id} onChange={handleChangeInput} />
                 </div>
 
                 <div className="row">
@@ -174,7 +156,7 @@ function CreateProduct() {
 
                
 
-                <button type="submit">{onEdit? "Update" : "Create"}</button>
+                <button type="submit"> Create Products</button>
             </form>
         </div>
     )
