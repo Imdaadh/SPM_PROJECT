@@ -15,6 +15,8 @@ import AdminViewPackages from "./packages/adminViewPackages";
 import AddPayment from './addPayment/addPayment';
 import ViewPayments from './viewPayment/viewPayment';
 import View_product from "./view_product/view_product";
+import UserPackages from "./packages/userViewPackages"
+import BeforeLoginPackages from "./packages/packageView"
 //include payment
 
 
@@ -40,6 +42,9 @@ function Pages() {
             //packages
             <Route path="/adminPackages" exact component={AdminViewPackages} />
             <Route path="/create_package" exact component={CreatePackage} />
+            <Route path="/userPackages" exact component={UserPackages} />
+            <Route path="/userPackagesbeforelogin" exact component={BeforeLoginPackages} />
+
 
 
             //user products

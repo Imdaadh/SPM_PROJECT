@@ -3,7 +3,7 @@ import React, {useContext, useEffect, useState} from 'react'
 import Loading from '../utils/loading/Loading'
 import axios from 'axios'
 import Filters from './Filters'
-import './products.css';
+import './package.css';
 import {Link} from "react-router-dom";
 
 function AdminViewPackages () {
