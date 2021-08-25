@@ -58,7 +58,7 @@ class Myheader extends React.Component{
                 <div style={{marginLeft:80,marginTop:-30}}>
                     <li><a href="#">History</a> </li>
                     <li><a href="/userProducts" >Products</a></li>
-                    <li><a href="#">Packages </a></li>
+                    <li><a href="/userPackages">Packages </a></li>
                     <li><a href="/addPayment" >Add Payment</a></li>
                     <li><a href="/getPayments" >View Payments</a></li>
                     <li className="buy-tickets"  onClick={this.doLogout}><a href="/">Logout</a></li>
@@ -89,6 +89,7 @@ class Myheader extends React.Component{
                         <li className="menu-active" ><a href="/"  style={{marginLeft:-90,color:"white"}}><b><u>Dev Car</u></b></a></li>
                         <div style={{marginLeft:550,marginTop:-30}}>
                     <li><a href="/">Products</a></li>
+                            <li><a href="/userPackagesbeforelogin">Packages</a></li>
                     <li className="buy-tickets"><a href="/register">REGISTER</a></li>
                     <li className="buy-tickets"><a href="/login">LOGIN</a></li>
                 </div>
