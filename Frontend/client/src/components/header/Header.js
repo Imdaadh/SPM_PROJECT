@@ -56,7 +56,7 @@ class Myheader extends React.Component{
                 <div>
                     <li className="menu-active" ><a href="/adminProducts"  style={{marginLeft:-90}}><b><u>Dev Car</u></b></a></li>
                 <div style={{marginLeft:80,marginTop:-30}}>
-                    <li><a href="#">History</a> </li>
+                    <li><a href="/viewreservations">History</a> </li>
                     <li><a href="/userProducts" >Products</a></li>
                     <li><a href="/userPackages">Packages </a></li>
                     <li><a href="/addPayment" >Add Payment</a></li>

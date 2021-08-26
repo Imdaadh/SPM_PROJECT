@@ -3,6 +3,7 @@ import {useParams, Link} from 'react-router-dom'
 import {GlobalState} from '../../GlobalState'
 import './view_products.css'
 import axios from "axios";
+import decode from "jwt-decode";
 
 
 function View_product() {
@@ -11,8 +12,11 @@ function View_product() {
 
         let reservation = {images:images1 ,title:title2, price:price3, description:description3, content:content4};
         console.log(reservation);
+        let total3 = price3* user.day;
+        let total= total3;
+
         try {
-             axios.post('http://localhost:5000/reservation/addReservation', {...reservation,...user}) .then(response => {
+             axios.post('http://localhost:5000/reservation/addReservation', {...reservation,...user,email,total}) .then(response => {
                  alert('Reservation added')
              })
 
@@ -20,6 +24,10 @@ function View_product() {
             alert(err.response.data.msg)
         }
     }
+
+
+    const [email, setEmail] = useState('')
+    // const [total, setTotal] = useState(0)
 
     const params = useParams()
     const state = useContext(GlobalState)
@@ -38,6 +46,10 @@ function View_product() {
 
 
     useEffect(() =>{
+        if(sessionStorage.token){
+            setEmail(decode(sessionStorage.token).email)
+        }
+
         if(params.id){
 
             products.forEach(product => {

@@ -7,7 +7,7 @@ router.post('/addReservation',async(req, res) =>{
 
     try {
         // const {r} = req.body;
-        // console.log(req.body)
+        console.log(req.body)
         const newReservation = new Reservation(req.body);
         await newReservation.save()
         res.json({msg: "Successfully Reservation Added"})
@@ -21,11 +21,14 @@ router.post('/addReservation',async(req, res) =>{
 router.get('/getReservation',async(req, res) =>{
     try{
         const newReservation = await Reservation.find();
-        res.json(newReservation);
+        res.json({
+            newReservation: newReservation
+        })
     }catch(e){
         console.log(e)
     }
 })
+
 
 
 module.exports = router
