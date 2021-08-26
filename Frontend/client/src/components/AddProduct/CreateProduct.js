@@ -12,8 +12,8 @@ const initialState = {
     category: '',
     model: '',
     description: 'MERN Stack is a Javascript Stack that is used for easier and faster deployment ' +
-                 'of full-stack web applications. MERN Stack comprises of 4 technologies namely: MongoDB, Express,' +
-                ' React and Node.js. It is designed to make the development process smoother and easier..',
+        'of full-stack web applications. MERN Stack comprises of 4 technologies namely: MongoDB, Express,' +
+        ' React and Node.js. It is designed to make the development process smoother and easier..',
     _id: ''
 }
 
@@ -23,32 +23,16 @@ function CreateProduct() {
     const state = useContext(GlobalState)
     const [images, setImages] = useState(false)
     const [loading, setLoading] = useState(false)
-    const [products] = state.productsAPI.products
+
     const [categories] = state.categoriesAPI.categories
 
 
 
     const history = useHistory()
-    const param = useParams()
-
-    useEffect(() => {
-        if(param.id){
-            setOnEdit(true)
-            products.forEach(product => {
-                if(product._id === param.id) {
-                    setProduct(product)
-                    setImages(product.images)
-                }
-            })
-        }else{
-            setOnEdit(false)
-            setProduct(initialState)
-            setImages(false)
-        }
-    }, [param.id, products])
 
 
-    const [onEdit, setOnEdit] = useState(false)
+
+
 
 
 
@@ -58,7 +42,7 @@ function CreateProduct() {
         try {
 
             const file = e.target.files[0]
-            
+
             if(!file) return alert("File not exist.")
 
             if(file.size > 1024 * 1024) // 1mb
@@ -104,11 +88,9 @@ function CreateProduct() {
         try {
             if(!images) return alert("No Image Upload")
 
-            if(onEdit){
-                await axios.put(`/product/updateProducts/${product._id}`, {...product, images})
-            }else{
-                await axios.post('/product/addProducts', {...product, images})
-            }
+
+            await axios.post('/product/addProducts', {...product, images})
+
 
             history.push("/adminProducts")
         } catch (err) {
@@ -126,31 +108,31 @@ function CreateProduct() {
                 {
                     loading ? <div id="file_img"><Loading /></div>
 
-                    :<div id="file_img" style={styleUpload}>
-                        <img src={images ? images.url : ''} alt=""/>
-                        <span onClick={handleDestroy}>X</span>
-                    </div>
+                        :<div id="file_img" style={styleUpload}>
+                            <img src={images ? images.url : ''} alt=""/>
+                            <span onClick={handleDestroy}>X</span>
+                        </div>
                 }
-                
+
             </div>
 
             <form onSubmit={handleSubmit}>
                 <div className="row">
                     <label htmlFor="product_id">Vehicle ID</label>
                     <input type="text" name="product_id" id="product_id" required
-                    value={product.product_id} onChange={handleChangeInput} disabled={onEdit} />
+                           value={product.product_id} onChange={handleChangeInput} />
                 </div>
 
                 <div className="row">
                     <label htmlFor="title">Model</label>
                     <input type="text" name="title" id="title" required
-                    value={product.title} onChange={handleChangeInput} />
+                           value={product.title} onChange={handleChangeInput} />
                 </div>
 
                 <div className="row">
                     <label htmlFor="price">Price</label>
                     <input type="number" name="price" id="price" required
-                    value={product.price} onChange={handleChangeInput} />
+                           value={product.price} onChange={handleChangeInput} />
                 </div>
                 <div className="row">
                     <label htmlFor="categories">Categories: </label>
@@ -172,9 +154,9 @@ function CreateProduct() {
                               value={product.description} rows="5" onChange={handleChangeInput} />
                 </div>
 
-               
 
-                <button type="submit">{onEdit? "Update" : "Create"}</button>
+
+                <button type="submit"> Create Products</button>
             </form>
         </div>
     )
