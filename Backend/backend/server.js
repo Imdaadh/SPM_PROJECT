@@ -55,6 +55,7 @@ app.use('/product', require('./routes/productRouter'))
 app.use('/package', require('./routes/packageRouter'))
 app.use('/payment',require('./routes/payment'));
 app.use('/api', require('./routes/categoryRouter'))
+app.use('/reservation', require('./routes/reservationRouter'))
 
  
 app.listen(port, () => {
