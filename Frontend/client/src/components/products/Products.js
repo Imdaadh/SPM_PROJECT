@@ -72,7 +72,7 @@ function Products() {
                                       onClick={() =>deleteProduct(product._id, product.images.public_id)}>
                                     Delete
                                 </Link>
-                                <Link id="btn_view" to={'#'}>
+                                <Link id="btn_view" to={`/edit_product/${product._id}`}>
                                     Edit
                                 </Link>
                             </div>
