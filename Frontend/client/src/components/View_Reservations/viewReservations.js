@@ -21,6 +21,26 @@ function View_reservations() {
     const [callback, setCallback] = useState(false)
     const [search, setSearch] = useState('')
 
+    const Delete_Reservation= async (id) => {
+        try {
+            await axios.delete(`http://localhost:5000/reservation/deleteReservation/${id}`)
+            alert('Reservation Deleted')
+        }
+        catch(error){
+            alert(error);
+        };
+    }
+    const Update_Reservation= async (id) => {
+        try {
+            await axios.delete(`http://localhost:5000/reservation/updateReservation/${id}`)
+            alert('Reservation Updated')
+        }
+        catch(error){
+            alert(error);
+        };
+    }
+
+
 
     useEffect(() =>{
         const getProducts = async () => {
@@ -34,7 +54,6 @@ function View_reservations() {
 
 
     if(loading) return <div> <Loading /></div>
-
     return(
         <>
             <div className="filter_menu">
@@ -64,11 +83,8 @@ function View_reservations() {
                             <h2>Total Payment: ${product.total} </h2>
                         </div>
 
-
-
-
-                        <button className="reserve" > Delete Reservation </button>
-                        <button className="reserve1" > Update Reservation </button>
+                        <button className="reserve" onClick={()=>Delete_Reservation(product._id)}> Delete Reservation </button>
+                        <Link to={`updateReservation/${product._id}`}> <button className="reserve1"> Update Reservation </button></Link>
                     </div>
 
                 </div>
