@@ -5,6 +5,8 @@ import './ViewPackageReservation.css'
 import axios from "axios";
 import decode from "jwt-decode";
 import Loading from "../utils/loading/Loading";
+import Button from '@mui/material/Button';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 
 function View_Preservations() {
@@ -74,7 +76,7 @@ function View_Preservations() {
                                     <h2>Total Payment: ${product.total} </h2>
                                 </div>
 
-                                <button className="reserve5" onClick={()=>Delete_Reservation(product._id)}> Cancel Reservation </button>
+                                <Button className="reserve5" endIcon={<DeleteIcon />} onClick={()=>Delete_Reservation(product._id)}> Cancel Reservation </Button>
                             </div>
 
                         </div>

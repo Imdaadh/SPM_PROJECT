@@ -4,6 +4,8 @@ import {GlobalState} from '../../GlobalState'
 import './view_products.css'
 import axios from "axios";
 import decode from "jwt-decode";
+import Button from '@mui/material/Button';
+import AddCircleIcon from '@mui/icons-material/AddCircle';
 
 
 function View_product() {
@@ -79,7 +81,7 @@ function View_product() {
 
                                 <input type='number' onChange={onChangeInput} value={user.day} className='days'  name="day" placeholder='Enter the Number of Days'/><br />
                                 <input type='date'  onChange={onChangeInput} value={user.date} className='date' name="date" placeholder='enter the date' /><br />
-                                <Link to={`/addPayment/${detailProduct._id}`}> <button className="reserve" onClick={()=>{handleReservation(detailProduct.images.url,detailProduct.title, detailProduct.price,detailProduct.description,detailProduct.content)}}> Reserve </button></Link>
+                                <Link to={`/addPayment/${detailProduct._id}`}> <Button className="reserve" endIcon={<AddCircleIcon />} onClick={()=>{handleReservation(detailProduct.images.url,detailProduct.title, detailProduct.price,detailProduct.description,detailProduct.content)}}> Reserve </Button></Link>
                             </div>
                         </div>
 

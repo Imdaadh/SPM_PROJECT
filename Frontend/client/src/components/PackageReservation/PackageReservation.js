@@ -4,6 +4,8 @@ import {GlobalState} from '../../GlobalState'
 import './PackageReservation.css'
 import axios from "axios";
 import decode from "jwt-decode";
+import Button from '@mui/material/Button';
+import AddCircleIcon from '@mui/icons-material/AddCircle';
 
 
 function Package_Reservation() {
@@ -83,7 +85,7 @@ function Package_Reservation() {
 
                         <input type='number' onChange={onChangeInput} value={user.day} className='days'  name="day" placeholder='Enter the Number of Days'/><br />
                         <input type='date'  onChange={onChangeInput} value={user.date} className='date' name="date" placeholder='enter the date' /><br />
-                        <button className="reserve3" onClick={()=>{handlePReservation(detailProduct.images.url,detailProduct.PackageName, detailProduct.price,detailProduct.description)}}> Reserve Package</button>
+                        <Link to={`/addPayment/${detailProduct._id}`}> <Button className="reserve3" endIcon={<AddCircleIcon />} onClick={()=>{handlePReservation(detailProduct.images.url,detailProduct.PackageName, detailProduct.price,detailProduct.description)}}> Reserve Package</Button></Link>
                     </div>
                 </div>
 
