@@ -31,15 +31,6 @@ function View_reservations() {
             alert(error);
         };
     }
-    const Update_Reservation= async (id) => {
-        try {
-            await axios.delete(`http://localhost:5000/reservation/updateReservation/${id}`)
-            alert('Reservation Updated')
-        }
-        catch(error){
-            alert(error);
-        };
-    }
 
 
 

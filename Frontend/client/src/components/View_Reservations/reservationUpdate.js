@@ -81,7 +81,7 @@ function Update_Reservation() {
 
                         <input type='number' value={user.day} onChange={onChangeInput} className='days'  name="day" placeholder='Enter the Number of Days'/><br />
                         <input type='date'  onChange={onChangeInput} value={user.date} className='date' name="date" placeholder='enter the date' /><br />
-                        <Link to="/addPayment"> <button className="reserve8"  onClick={()=>{handleReservation(detailProduct._id,detailProduct.price,user.day,user.date)}}>Update Reservation</button></Link>
+                        <Link to={`/addPayment/${detailProduct._id}`}> <button className="reserve8"  onClick={()=>{handleReservation(detailProduct._id,detailProduct.price,user.day,user.date)}}>Update Reservation</button></Link>
 
                     </div>
 

@@ -79,7 +79,7 @@ function View_product() {
 
                                 <input type='number' onChange={onChangeInput} value={user.day} className='days'  name="day" placeholder='Enter the Number of Days'/><br />
                                 <input type='date'  onChange={onChangeInput} value={user.date} className='date' name="date" placeholder='enter the date' /><br />
-                                <Link to="/addPayment"> <button className="reserve" onClick={()=>{handleReservation(detailProduct.images.url,detailProduct.title, detailProduct.price,detailProduct.description,detailProduct.content)}}> Reserve </button></Link>
+                                <Link to={`/addPayment/${detailProduct._id}`}> <button className="reserve" onClick={()=>{handleReservation(detailProduct.images.url,detailProduct.title, detailProduct.price,detailProduct.description,detailProduct.content)}}> Reserve </button></Link>
                             </div>
                         </div>
 
