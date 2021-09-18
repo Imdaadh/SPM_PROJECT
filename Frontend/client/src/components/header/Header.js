@@ -55,8 +55,10 @@ function Header() {
             <>
                 <li><Link to="/userProducts">Products</Link></li>
                 <li><Link to="/userPackages">Packages</Link></li>
-                <li><Link to="/addPayment">Add Payment</Link></li>
-                <li><Link to="/getPayments">View Payments</Link></li>
+                <li><Link to="/view_package_reservation">Package Reservation</Link></li>
+                <li><Link to="/viewreservations">Vehicle Reservation</Link></li>
+                {/*<li><Link to="/addPayment">Add Payment</Link></li>*/}
+                {/*<li><Link to="/getPayments">View Payments</Link></li>*/}
                 <li><Link to="/" onClick={logoutUser}>Logout</Link></li>
             </>
         )

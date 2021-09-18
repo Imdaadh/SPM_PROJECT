@@ -25,6 +25,7 @@ function View_reservations() {
         try {
             await axios.delete(`http://localhost:5000/reservation/deleteReservation/${id}`)
             alert('Reservation Deleted')
+            window.location.reload(false);
         }
         catch(error){
             alert(error);
@@ -83,8 +84,8 @@ function View_reservations() {
                             <h2>Total Payment: ${product.total} </h2>
                         </div>
 
-                        <button className="reserve" onClick={()=>Delete_Reservation(product._id)}> Delete Reservation </button>
-                        <Link to={`updateReservation/${product._id}`}> <button className="reserve1"> Update Reservation </button></Link>
+                        <button className="reserve7" onClick={()=>Delete_Reservation(product._id)}> Cancel Reservation </button>
+                        <Link to={`updateReservation/${product._id}`}> <button className="reserve8"> Update Reservation </button></Link>
                     </div>
 
                 </div>

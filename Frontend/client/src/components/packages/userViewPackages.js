@@ -78,8 +78,7 @@ function UserViewPackages () {
 
 
                             <div className="row_btn">
-                                <Link id="btn_view" to="#!"
-                                >
+                                    <Link id="btn_view" to={`/package_reservation/${product._id}`} style={{width:300}}>
                                     Reserve
                                 </Link>
 

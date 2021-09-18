@@ -26,7 +26,7 @@
     height: 100%;
     max-height: 400px;
     display: block;
-    object-fit: cover;
+    object-fit:cover;
 }
 
 .details .box{
@@ -56,7 +56,7 @@
     margin:15px 0 ;
 }
 
-.box .reserve{
+.box .reserve7{
     background: #333;
     color: white;
     outline: none;
@@ -69,11 +69,12 @@
 
 }
 
-.box .reserve:hover{
-    background-color: #797676;
+.box .reserve7:hover{
+    background-color: #F32225;
 
 }
-.box .reserve1{
+
+.box .reserve8{
     background: #333;
     color: white;
     outline: none;
@@ -86,10 +87,11 @@
 
 }
 
-.box .reserve1:hover{
-    background-color: #797676;
+.box .reserve8:hover{
+    background-color: #036C90;
 
 }
+
 
 
 
