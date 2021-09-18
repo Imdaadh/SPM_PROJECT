@@ -1,141 +1,115 @@
-import React from 'react'
-import {BrowserRouter as Router, Link} from 'react-router-dom'
-import decode from 'jwt-decode';
-import './header.css';
+import React, {useContext, useEffect, useState} from 'react'
 import Menu from './icon/menu.svg'
 import Close from './icon/close.svg'
+import {Link} from 'react-router-dom'
+import axios from 'axios'
+import decode from 'jwt-decode';
 
+function Header() {
+    const [menu, setMenu] = useState(false)
+    const [user, setUser] = useState('')
 
-
-class Myheader extends React.Component{
-
-    state={
-        user:'',
-        email:''
-
-
-
-    }
-
-    doLogout() {
-
+    const logoutUser = async () =>{
         sessionStorage.clear()
-        window.location = '/'
-
+        window.location.href = "/";
     }
 
+    useEffect(() =>{
+        const getSession= async () => {
+            if(sessionStorage.token){
+                setUser(decode(sessionStorage.token).role)
 
-
-    componentDidMount() {
-
-        if(sessionStorage.token){
-            this.setState({user:decode(sessionStorage.token).role})
-            this.setState({email:decode(sessionStorage.token).email})
+            }
         }
-
-    }
-
-    isAuth() {
+        getSession()
+    },[])
 
 
-        if (this.state.user==='admin') {
-            return (
-                <div>
-                    <li className="menu-active" ><a href="/adminProducts"  style={{marginLeft:-10}}><b><u>Dev Car</u></b></a></li>
-                <div style={{marginLeft:300,marginTop:-30}}>
-                    <li><a href="/create_product">ADD Product</a> </li>
-                    <li><a href="/create_category">ADD Categories</a> </li>
-                    <li><a href="/adminProducts" >Products</a></li>
-                    <li><a href="/orderHistory">ORDERS </a></li>
-                    <li className="buy-tickets"  onClick={this.doLogout}><a href="/">Logout</a></li>
-                </div>
-                </div>
-            )
-        } else if(this.state.user==='user') {
-            return (
-                <div>
-                    <li className="menu-active" ><a href="/adminProducts"  style={{marginLeft:-90}}><b><u>Dev Car</u></b></a></li>
-                <div style={{marginLeft:80,marginTop:-30}}>
-                    <li><a href="/viewreservations">History</a> </li>
-                    <li><a href="/userProducts" >Products</a></li>
-                    <li><a href="/userPackages">Packages </a></li>
-                    <li><a href="/addPayment" >Add Payment</a></li>
-                    <li><a href="/getPayments" >View Payments</a></li>
-                    <li className="buy-tickets"  onClick={this.doLogout}><a href="/">Logout</a></li>
-
-                </div>
-                </div>
-            )
-        }
-        else if(this.state.user==='adminP') {
-            return (
-                <div>
-                    <li className="menu-active" ><a href="/adminPackages"  style={{marginLeft:-180}}><b><u>Dev Car</u></b></a></li>
-                    <div style={{marginLeft:300,marginTop:-30}}>
-                    <li><a href="/create_package">ADD Package</a> </li>
-                    <li><a href="/adminPackages" >Packages</a></li>
-                    <li><a href="/orderHistory">ORDERS </a></li>
-                    <li className="buy-tickets"  onClick={this.doLogout}><a href="/">Logout</a></li>
-                </div>
-                </div>
-
-
-            )
-        }
-        else {
-            return (
-
-                    <div>
-                        <li className="menu-active" ><a href="/"  style={{marginLeft:-90,color:"white"}}><b><u>Dev Car</u></b></a></li>
-                        <div style={{marginLeft:550,marginTop:-30}}>
-                    <li><a href="/">Products</a></li>
-                            <li><a href="/userPackagesbeforelogin">Packages</a></li>
-                    <li className="buy-tickets"><a href="/register">REGISTER</a></li>
-                    <li className="buy-tickets"><a href="/login">LOGIN</a></li>
-                </div>
-                </div>
-            )
-        }
-
-    }
-
-
-
-
-
-
-
-    render() {
+    const adminRouter = () =>{
         return(
-            <div>
+            <>
+                <li><Link to="/create_product">ADD Product</Link></li>
+                <li><Link to="/create_category">ADD Categories</Link></li>
+                <li><Link to="/adminProducts">Products</Link></li>
+                <li><Link to="/orderHistory">ORDERS</Link></li>
+                <li><Link to="/" onClick={logoutUser}>Logout</Link></li>
 
-                <header>
-                    <div className="menu" >
-                        <img src={Menu} alt="" width="30" />
-                    </div>
-
-
-
-
-
-
-
-
-
-                        <nav id="nav-menu-container" >
-                            <ul className="nav-menu"  style={{color:"red"}} >
-                                {this.isAuth()}
-                            </ul>
-                        </nav>
-
-
-                </header>
-
-            </div>
-
-
-
+            </>
         )
     }
+
+    const packageAdminRouter = () =>{
+        return(
+            <>
+                <li><Link to="/create_package">ADD Package</Link></li>
+                <li><Link to="/adminPackages">Packages</Link></li>
+                <li><Link to="/orderHistory">ORDERS</Link></li>
+                <li><Link to="/" onClick={logoutUser}>Logout</Link></li>
+
+            </>
+        )
+    }
+
+    const userRouter = () =>{
+        return(
+            <>
+                <li><Link to="/userProducts">Products</Link></li>
+                <li><Link to="/userPackages">Packages</Link></li>
+                <li><Link to="/addPayment">Add Payment</Link></li>
+                <li><Link to="/getPayments">View Payments</Link></li>
+                <li><Link to="/" onClick={logoutUser}>Logout</Link></li>
+            </>
+        )
+    }
+
+    const homeRouter = () =>{
+        return(
+            <>
+                <li><Link to="/">Products</Link></li>
+                <li><Link to="/userPackagesbeforelogin">Packages</Link></li>
+                <li><Link to="/register">REGISTER</Link></li>
+                <li><Link to="/login">LOGIN</Link></li>
+
+            </>
+        )
+    }
+
+    const styleMenu = {
+        left: menu ? 0 : "-100%"
+    }
+
+    return (
+        <header>
+            <div className="menu" onClick={() => setMenu(!menu)}>
+                <img src={Menu} alt="" width="30" />
+            </div>
+            <div className="logo">
+                <h1 >
+                    <Link to="/">
+                        {
+                            user==='admin' ? 'AdminUI'
+                                : user==='adminP' ? 'AdminUI'
+                                : 'MrDev Shop'
+                        }
+                    </Link>
+                </h1>
+            </div>
+
+            <ul style={styleMenu}>
+                {
+                    user==='admin' ? adminRouter()
+                        : user==='user' ? userRouter()
+                        : user==='adminP' ? packageAdminRouter()
+                            : homeRouter()
+                }
+
+                <li onClick={() => setMenu(!menu)}>
+                    <img src={Close} alt="" width="30" className="menu" />
+                </li>
+
+            </ul>
+        </header>
+    )
 }
-export default Myheader
+
+export default Header
