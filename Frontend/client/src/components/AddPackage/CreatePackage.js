@@ -23,7 +23,7 @@ function CreatePackage() {
     const state = useContext(GlobalState)
     const [images, setImages] = useState(false)
     const [loading, setLoading] = useState(false)
-    const [products] = state.productsAPI.products
+    const [package1] = state.productsAPI.package1
     const [categories] = state.categoriesAPI.categories
 
 
@@ -31,6 +31,24 @@ function CreatePackage() {
     const history = useHistory()
 
 
+    const param = useParams()
+
+
+    useEffect(() => {
+        if(param.id){
+            setOnEdit(true)
+            package1.forEach(product => {
+                if(product._id === param.id) {
+                    setVehiclepackage(product)
+                    setImages(product.images)
+                }
+            })
+        }else{
+            setOnEdit(false)
+            setVehiclepackage(initialState)
+            setImages(false)
+        }
+    }, [param.id, package1])
 
 
 
@@ -92,7 +110,7 @@ function CreatePackage() {
             if(!images) return alert("No Image Upload")
 
             if(onEdit){
-                await axios.put(`/product/updateProducts/${vehiclepackage._id}`, {...vehiclepackage, images})
+                await axios.put(`/package/updatePackage/${vehiclepackage._id}`, {...vehiclepackage, images})
             }else{
                 await axios.post('/package/addPackage', {...vehiclepackage, images})
             }

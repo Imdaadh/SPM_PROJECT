@@ -4,6 +4,7 @@ import axios from 'axios'
 
 function ProductsAPI() {
     const [products, setProducts] = useState([])
+    const [package1, setPackage1] = useState([])
     const [callback, setCallback] = useState(false)
     const [category, setCategory] = useState('')
     const [sort, setSort] = useState('')
@@ -19,9 +20,22 @@ function ProductsAPI() {
         }
         getProducts()
     },[callback, category, sort, search, page])
-    
+
+
+    useEffect(() =>{
+        const getPackage = async () => {
+            const res = await axios.get(`/package/getPackage?limit=${page*18}&PackageName[regex]=${search}`)
+            setPackage1(res.data.products)
+            setResult(res.data.result)
+        }
+        getPackage()
+    },[callback, category, sort, search, page])
+
+
+
     return {
         products: [products, setProducts],
+        package1: [package1, setPackage1],
         callback: [callback, setCallback],
         category: [category, setCategory],
         sort: [sort, setSort],

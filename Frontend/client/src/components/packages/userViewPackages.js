@@ -1,10 +1,11 @@
 import React, {useContext, useEffect, useState} from 'react'
-
+//import {Modal,Button} from 'react-bootstrap'
 import Loading from '../utils/loading/Loading'
 import axios from 'axios'
 import Filters from './Filters'
 import './package.css';
 import {Link} from "react-router-dom";
+//import { Modal, Button } from 'antd';
 
 function UserViewPackages () {
 
@@ -16,11 +17,20 @@ function UserViewPackages () {
     // const [products, setProducts] = state.productsAPI.products
     // const [callback, setCallback] = state.productsAPI.callback
 
+    ///new item///
+    const [visible, setVisible] = useState(false);
+
+
+
+    ///
+
     const [products, setProducts] = useState([])
     const [page, setPage] = useState(1)
     const [callback, setCallback] = useState(false)
     const [search, setSearch] = useState('')
-
+//
+    
+    //
 
     useEffect(() =>{
         const getProducts = async () => {
@@ -79,20 +89,25 @@ function UserViewPackages () {
 
                             <div className="row_btn">
                                 <Link id="btn_view" to="#!"
-                                >
-                                    Reserve
+                                      onClick={() => setVisible(true)}>
+                                    INQUIRY
                                 </Link>
+
 
                             </div>
                         </div>
                     </div>
 
                 ))
+
+
+
                 ///////////////////
 
 
             }
             {/*</div>*/}
+
         </>
     )
 }
