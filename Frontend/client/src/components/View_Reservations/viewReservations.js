@@ -5,7 +5,10 @@ import './viewReservations.css'
 import axios from "axios";
 import decode from "jwt-decode";
 import Loading from "../utils/loading/Loading";
-
+import Button from '@mui/material/Button';
+import EditIcon from '@mui/icons-material/Edit';
+import UpdateIcon from '@mui/icons-material/Update';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 function View_reservations() {
 
@@ -25,15 +28,7 @@ function View_reservations() {
         try {
             await axios.delete(`http://localhost:5000/reservation/deleteReservation/${id}`)
             alert('Reservation Deleted')
-        }
-        catch(error){
-            alert(error);
-        };
-    }
-    const Update_Reservation= async (id) => {
-        try {
-            await axios.delete(`http://localhost:5000/reservation/updateReservation/${id}`)
-            alert('Reservation Updated')
+            window.location.reload(false);
         }
         catch(error){
             alert(error);
@@ -83,8 +78,8 @@ function View_reservations() {
                             <h2>Total Payment: ${product.total} </h2>
                         </div>
 
-                        <button className="reserve" onClick={()=>Delete_Reservation(product._id)}> Delete Reservation </button>
-                        <Link to={`updateReservation/${product._id}`}> <button className="reserve1"> Update Reservation </button></Link>
+                        <Button className="reserve7" endIcon={<DeleteIcon />} onClick={()=>Delete_Reservation(product._id)}> Cancel Reservation </Button>
+                        <Link to={`updateReservation/${product._id}`}> <Button endIcon={<EditIcon />} className="reserve8"> Update Reservation </Button></Link>
                     </div>
 
                 </div>

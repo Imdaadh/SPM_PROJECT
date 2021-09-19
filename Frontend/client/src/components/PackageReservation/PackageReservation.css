@@ -56,7 +56,7 @@
     margin:15px 0 ;
 }
 
-.box .reserve9{
+.box .reserve3{
     background: #333;
     color: white;
     outline: none;
@@ -64,12 +64,13 @@
     cursor: pointer;
     padding: 10px 25px;
     margin-top: 50px;
-    width: 50%;
-    margin-left: 120px;
+    width: 65%;
+    margin-left: 85px;
 
 }
-.box .reserve9:hover{
-    background-color: #0A0C0D;
+
+.box .reserve3:hover{
+    background-color: #797676;
 
 }
 
