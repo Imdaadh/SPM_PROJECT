@@ -79,12 +79,12 @@ router.get('/getPackage',async(req, res) =>{
 
     try {
 
-console.log("inside the package")
+// console.log("inside the package")
         const features = new APIfeatures(Package.find(), req.query)
             .filtering().sorting().paginating()
-        console.log("inside the package 1111111111")
+        // console.log("inside the package 1111111111")
         const products = await features.query
-        console.log("inside the package 212121212")
+        // console.log("inside the package 212121212")
         res.json({
             status: 'success',
             result: products.length,

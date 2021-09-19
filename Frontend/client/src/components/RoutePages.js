@@ -19,6 +19,8 @@ import View_product from "./view_product/view_product";
  import BeforeLoginPackages from "./packages/packageView"
  import View_reservations from "./View_Reservations/viewReservations";
  import ReservationUpdate from "./View_Reservations/reservationUpdate";
+ import Package_Reservation from "./PackageReservation/PackageReservation"
+ import View_Preservations from "./PackageReservation/ViewPackageReservation"
 //include payment
 
 
@@ -56,6 +58,8 @@ function Pages() {
             <Route path="/reservation" exact component={Reservation} />
             <Route path="/viewreservations" exact component={View_reservations} />
             <Route path="/updateReservation/:id" exact component={ReservationUpdate} />
+            <Route path="/package_reservation/:id" exact component={Package_Reservation} />
+            <Route path="/view_package_reservation" exact component={View_Preservations} />
 
             //admin products
             <Route path="/adminProducts" exact component={Products} />
@@ -68,7 +72,7 @@ function Pages() {
 
 
             {/*<Route path="/payment" exact component={isLogged ? payment : NotFound} />*/}
-                <Route path="/addPayment" component={AddPayment}/>
+                <Route path="/addPayment/:id" component={AddPayment}/>
                 <Route path="/getPayments" component={ViewPayments}/>
             <Route path="/login" exact component={Login} />
             <Route path="/register" exact component={Register} />

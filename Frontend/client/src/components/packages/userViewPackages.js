@@ -88,11 +88,7 @@ function UserViewPackages () {
 
 
                             <div className="row_btn">
-                                <Link id="btn_view" to="#!"
-                                      //onClick={() => setVisible(true)}
-                                    >
-                                    reserve
-                                </Link>
+                          
 
 
                             </div>
