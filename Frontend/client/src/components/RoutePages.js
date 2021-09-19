@@ -46,6 +46,7 @@ function Pages() {
             //packages
             <Route path="/adminPackages" exact component={AdminViewPackages} />
             <Route path="/create_package" exact component={CreatePackage} />
+            <Route path="/edit_package/:id" exact component={CreatePackage } />
             {<Route path="/userPackages" exact component={UserPackages} />}
             {<Route path="/userPackagesbeforelogin" exact component={BeforeLoginPackages} />}
 

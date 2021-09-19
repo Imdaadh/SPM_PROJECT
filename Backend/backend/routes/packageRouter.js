@@ -103,11 +103,11 @@ router.get('/getPackage',async(req, res) =>{
 
 
 // deleting the  product details from  product Document
-router.delete('/deleteProducts/:id',async(req, res) =>{
+router.delete('/deletePackage/:id',async(req, res) =>{
     try {
 
 
-        await Products.findByIdAndDelete(req.params.id)
+        await Package.findByIdAndDelete(req.params.id)
         res.json({msg: "Deleted a Product"})
     } catch (err) {
         return res.status(500).json({msg: err.message})
@@ -120,12 +120,29 @@ router.delete('/deleteProducts/:id',async(req, res) =>{
 
 
 
+// updating the  product details from  product Document
+router.put('/updatePackage/:id',async(req, res) =>{
+
+    try {
+        const { PackageName, price,description, images} = req.body;
+
+
+        if(!images) return res.status(400).json({msg: "No image upload"})
 
 
 
 
+        await Package.findOneAndUpdate({_id: req.params.id}, {
+            PackageName: PackageName.toLowerCase(), price, description, images
+        })
+
+        res.json({msg: "Updated a Package"})
+    } catch (err) {
+        return res.status(500).json({msg: err.message})
+    }
 
 
+})
 
 
 

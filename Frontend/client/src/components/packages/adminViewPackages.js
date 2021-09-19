@@ -31,14 +31,14 @@ function AdminViewPackages () {
         getProducts()
     },[callback, search, page])
 
-    const deleteProduct = async(id, public_id) => {
+      const deleteProduct = async(id, public_id) => {
         try {
-            if(window.confirm("Do you want to delete this product?")){
+            if(window.confirm("Do you want to delete this Package?")){
                 setLoading(true)
                 const destroyImg = axios.post('/image/delete', {public_id},{
                     // headers: {Authorization: token}
                 })
-                const deleteProduct = axios.delete(`/product/deleteProducts/${id}`, {
+                const deleteProduct = axios.delete(`/package/deletePackage/${id}`, {
                     // headers: {Authorization: token}
                 })
                 await destroyImg
@@ -79,10 +79,10 @@ function AdminViewPackages () {
 
                         <div className="row_btn">
                             <Link id="btn_buy" to="#!"
-                                 >
+                                  onClick={() =>deleteProduct(product._id, product.images.public_id)}>
                                 Delete
                             </Link>
-                            <Link id="btn_view" to={'#'}>
+                            <Link id="btn_view" to={`/edit_package/${product._id}`}>
                                 Update
                             </Link>
                         </div>
