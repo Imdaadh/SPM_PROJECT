@@ -35,6 +35,9 @@ router.put("/updateCard/:id", (req, res) => {
         );
 });
 
+
+
+
 //get single card
 router.get("/getByCardId/:id", async (req, res) => {
     const id = req.params.id;
@@ -46,6 +49,8 @@ router.get("/getByCardId/:id", async (req, res) => {
         console.log(e);
     }
 });
+
+
 
 //delete
 router.delete("/deleteCard/:id", (req, res) => {

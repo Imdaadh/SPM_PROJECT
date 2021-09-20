@@ -29,7 +29,7 @@ class UpdatePayment extends Component{
     onChange(e) {
         this.setState({ [e.target.name]: e.target.value })
     }
-
+//sample
     componentDidMount =()=> {
         if(sessionStorage.token){
             this.setState({email:decode(sessionStorage.token).email})
@@ -72,8 +72,11 @@ class UpdatePayment extends Component{
             email:this.state.email
         };
         console.log('DATA TO SEND', payment)
-        axios.post('http://localhost:5000/payment/addPayment',payment)
+
+        axios.put('http://localhost:5000/payment/updatePayment/'+this.props.match.params.id,payment)
             .then(response => {
+                alert("Payment Updated");
+                window.location.href="/getPayments";
                 // alert('Payment added')
             })
             .catch(error => {

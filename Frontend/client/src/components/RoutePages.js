@@ -12,15 +12,22 @@ import ProductsBfrLogin from './products/ProductsBefLogin'
 import Categories from "./categories/Categories";
 import CreatePackage from "./AddPackage/CreatePackage";
 import AdminViewPackages from "./packages/adminViewPackages";
+
 import AddPayment from './addPayment/addPayment';
 import ViewPayments from './viewPayment/viewPayment';
+import UpdatePayment from "./updatePayment/updatePayment";
+
 import View_product from "./view_product/view_product";
  import UserPackages from "./packages/userViewPackages"
  import BeforeLoginPackages from "./packages/packageView"
  import View_reservations from "./View_Reservations/viewReservations";
  import ReservationUpdate from "./View_Reservations/reservationUpdate";
  import Package_Reservation from "./PackageReservation/PackageReservation"
- import View_Preservations from "./PackageReservation/ViewPackageReservation"
+ import View_Preservations from "./PackageReservation/ViewPackageReservation";
+
+import AddCard from "./AddCard/addCard";
+import ViewCard from "./ViewCard/viewCard";
+import UpdateCard from "./UpdateCard/updateCard";
 //include payment
 
 
@@ -69,16 +76,25 @@ function Pages() {
             <Route path="/edit_product/:id" exact component={CreateProduct } />
             <Route path="/orderHistory" exact component={OrderHistory } />
 
-
+//sample
 
             {/*<Route path="/payment" exact component={isLogged ? payment : NotFound} />*/}
-                <Route path="/addPayment/:id" component={AddPayment}/>
+
+            {/*payments*/}
+                <Route path="/addPayment" component={AddPayment}/>
                 <Route path="/getPayments" component={ViewPayments}/>
+                <Route path="/getPaymentUpdate/:id" component={UpdatePayment}/>
+
+                {/*cards*/}
+            <Route path="/addCardDetail" component={AddCard}/>
+            <Route path="/getCardDetails" component={ViewCard}/>
+            <Route path="/getCardUpdate/:id" component={UpdateCard}/>
+
             <Route path="/login" exact component={Login} />
             <Route path="/register" exact component={Register} />
             <Route path="*" exact component={NotFound} />
 
-            //payments
+
 
 
 
