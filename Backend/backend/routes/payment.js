@@ -33,7 +33,7 @@ router.get('/getPayments',async (req,res) => {
     }
 })
 
-
+//update
 router.put('/updatePayment/:id', (req, res) => {
     console.log("updating....")
     Payment.findByIdAndUpdate(req.params.id, req.body)
@@ -43,14 +43,16 @@ router.put('/updatePayment/:id', (req, res) => {
         );
 });
 
-
+//extra sample
 
 //get single payment
 router.get('/getById/:id', async (req,res) =>{
+    console.log("update")
     const id = req.params.id;
     console.log(id);
     try{
-        const payments = await Payment.findOne({_id:id});
+        const payments = await Payment.findById(req.params.id);
+        console.log(payments)
         res.json(payments);
     }catch(e) {
         console.log(e);
