@@ -4,8 +4,14 @@
     margin: 100px auto;
     box-shadow: 0 0 5px #ccc;
 }
+.app2 {
+    max-width: 1200px;
+    width: 20%;
 
+    margin-top: 1px;
+    margin-left: 81.85%;
 
+}
 .details{
     display: flex;
     justify-content: space-around;
@@ -88,6 +94,43 @@
 }
 
 .box .reserve8:hover{
+    background-color: #036C90;
+
+}
+.box2 .reserve12{
+    background: #333;
+    color: white;
+    outline: none;
+    border:none;
+    cursor: pointer;
+    padding: 10px 25px;
+    margin-top: 1px;
+    width: 150px;
+    margin-left: 120px;
+
+}
+
+.box2 .reserve12:hover{
+    background-color: #036C90;
+
+}
+.box2 .reserve13{
+    background: #333;
+    color: white;
+    outline: none;
+    border:none;
+    cursor: pointer;
+    padding: 10px 25px;
+    /*margin-top: -4.59%;*/
+    margin-top: 1px;
+    margin-bottom: -280px;
+    width: 150px;
+    /*margin-left: 79.5%;*/
+    margin-left: 120px;
+
+}
+
+.box2 .reserve13:hover{
     background-color: #036C90;
 
 }
