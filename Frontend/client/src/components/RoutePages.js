@@ -81,7 +81,7 @@ function Pages() {
             {/*<Route path="/payment" exact component={isLogged ? payment : NotFound} />*/}
 
             {/*payments*/}
-                <Route path="/addPayment" component={AddPayment}/>
+                <Route path="/addPayment/:id" component={AddPayment}/>
                 <Route path="/getPayments" component={ViewPayments}/>
                 <Route path="/getPaymentUpdate/:id" component={UpdatePayment}/>
 
