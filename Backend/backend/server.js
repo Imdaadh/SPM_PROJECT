@@ -57,6 +57,7 @@ app.use('/payment',require('./routes/payment'));
 app.use('/api', require('./routes/categoryRouter'))
 app.use('/reservation', require('./routes/reservationRouter'))
 app.use('/packagereservation', require('./routes/packagereservationRouter'))
+app.use('/card', require('./routes/cardRouter'))
 
  
 app.listen(port, () => {

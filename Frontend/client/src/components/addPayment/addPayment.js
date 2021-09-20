@@ -1,11 +1,7 @@
 import React, { Component} from 'react';
-import 'bootstrap/dist/css/bootstrap.css';
-import 'bootstrap/dist/css/bootstrap-reboot.min.css'
-import 'bootstrap/dist/js/bootstrap.bundle'
-import './addpayment.css'
-//import Select from 'react-select';
+import './addpayment.css';
 import axios from 'axios';
-//example
+
 
 const initialState = {
     cardType:'',
@@ -25,22 +21,32 @@ const initialState = {
         this.state = initialState;
     }
 
-    componentDidMount() {
-        axios.get('http://localhost:2000/payment/')
-            .then(response => {
-                this.setState({payments:response.data.data},()=> {
-                    let data = [];
-                    this.state.payments.map((item,index) => {
-                        let payment = {
-                            value:item._id,
-                            label:item.name
-                        }
-                        data.push(payment)
-                    });
-                    this.setState({options:data});
-                })
-            })
-    }
+     state = {
+         cards: [],
+
+     };
+
+
+     componentDidMount() {
+         axios
+             .get("http://localhost:5000/card/getByCardId/61485559e9dd81c314f75d5c")
+             .then((res) => {
+                 this.state = {cardType:'',
+                     cardNumber:'',
+                     cardName:'',
+                     cvv:'',
+                     expiryDate:''
+                 };
+                 //const payments = res.data.data;
+                 console.log(res.data.data);
+                 this.setState({ cards: res.data });
+                 //console.log(products);
+                 // this.setState({products:res.data.data});
+             })
+             .catch((err) => err.message);
+     }
+
+
 
     onChange(e) {
         this.setState({ [e.target.name]: e.target.value })
@@ -49,6 +55,7 @@ const initialState = {
     onPaymentSelect(e) {
         this.setState({[e.target.name]: e.target.value})
     }
+    //sampe
 
     onSubmit(e) {
         e.preventDefault();
@@ -62,7 +69,8 @@ const initialState = {
         console.log('DATA TO SEND', payment)
         axios.post('http://localhost:5000/payment/addPayment',payment)
             .then(response => {
-                alert('Payment added')
+                alert('Payment added successfully')
+                window.location.href="/";
             })
             .catch(error => {
                 console.log(error.message);
@@ -70,86 +78,92 @@ const initialState = {
             })
     }
 
-    render(){
-        return(
-<div>
-    <center>
-            <div className="container">
-                <h1>Add Payment</h1>
-                <form onSubmit={this.onSubmit}>
-                    <div className="form-group w-50">
-                        <label htmlFor="subjectName" className="form-label">Card Type</label>
-                        <input
-                            type="text"
-                            className="form-control"
-                            id="subjectName"
-                            name="cardType"
-                            value={this.state.cardType}
-                            onChange={this.onChange}
-                        />
-                    </div>
+     render(){
+         return(
+             <div>
+                 <center>
+                     <div className="login-page"  style={{  height: 680,borderColor:"teal"}}>
+                         <h2>Add Payment</h2>
+                         <form onSubmit={this.onSubmit}>
+                             <br></br>
 
-                    <div className="form-group w-50">
-                        <label htmlFor="subjectName" className="form-label">Card Number</label>
-                        <input
-                            type="text"
-                            className="form-control"
-                            id="subjectName"
-                            name="cardNumber"
-                            value={this.state.cardNumber}
-                            onChange={this.onChange}
-                        />
-                    </div>
 
-                    <div className="form-group w-50">
-                        <label htmlFor="subjectAmount" className="form-label">Card Name</label>
-                        <input
-                            type="text"
-                            className="form-control"
-                            id="subjectAmount"
-                            name="cardName"
-                            value={this.state.cardName}
-                            onChange={this.onChange}
-                        />
-                    </div>
 
-                    <div className="form-group w-50">
-                        <label htmlFor="subjectAmount" className="form-label">CVV</label>
-                        <input
-                            type="text"
-                            className="form-control"
-                            id="subjectAmount"
-                            name="cvv"
-                            value={this.state.cvv}
-                            onChange={this.onChange}
-                        />
-                    </div>
 
-                    <div className="form-group w-50">
-                        <label htmlFor="subjectAmount" className="form-label">Expiry Date</label>
-                        <input
-                            type="number"
-                            className="form-control"
-                            id="subjectAmount"
-                            name="expiryDate"
-                            value={this.state.expiryDate}
-                            onChange={this.onChange}
-                        />
-                    </div>
+                             <input
+                                 type="text"
+                                 className="form-control"
+                                 id="subjectName"
+                                 name="cardType"
+                                 required={true}
+                                 placeholder="Enter Card Type"
+                                 value={this.state.cardType}
+                                 onChange={this.onChange}
+                             />
 
-                    {/*<Select*/}
-                    {/*    options={this.state.options}*/}
-                    {/*    onChange={this.onPaymentSelect()}*/}
-                    {/*    className="basic-multi-select"*/}
-                    {/*    isMulti*/}
-                    {/*/>*/}
-                    <button type="submit" className="btn btn-primary">Submit</button>
-                </form>
-            </div>
-    </center>
-</div>
-        )
-    }
+
+
+
+
+                             <input
+                                 type="text"
+                                 className="form-control"
+                                 id="subjectName"
+                                 name="cardNumber"
+                                 required={true}
+                                 placeholder="Enter Card Number"
+                                 value={this.state.cardNumber}
+                                 onChange={this.onChange}
+                             />
+
+
+
+                             <input
+                                 type="text"
+                                 className="form-control"
+                                 id="subjectAmount"
+                                 name="cardName"
+                                 required={true}
+                                 placeholder="Enter Card Name"
+                                 value={this.state.cardName}
+                                 onChange={this.onChange}
+                             />
+
+
+
+                             <input
+                                 type="text"
+                                 className="form-control"
+                                 id="subjectAmount"
+                                 name="cvv"
+                                 required={true}
+                                 placeholder="Enter CVV"
+                                 value={this.state.cvv}
+                                 onChange={this.onChange}
+                             />
+
+
+
+                             <input
+                                 type="text"
+                                 className="form-control"
+                                 id="subjectAmount"
+                                 name="expiryDate"
+                                 required={true}
+                                 placeholder="Enter Expiry Date"
+                                 value={this.state.expiryDate}
+                                 onChange={this.onChange}
+                             />
+
+
+
+                             <button type="submit" className="btn btn-primary">Confirm</button>
+                         </form>
+                     </div>
+                 </center>
+             </div>
+         )
+     }
 
 }
 export default CreatePayment;
