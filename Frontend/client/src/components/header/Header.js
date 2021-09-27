@@ -4,6 +4,7 @@ import Close from './icon/close.svg'
 import {Link} from 'react-router-dom'
 import axios from 'axios'
 import decode from 'jwt-decode';
+import Setting from './icon/setting1.jpg'
 
 function Header() {
     const [menu, setMenu] = useState(false)
@@ -53,6 +54,7 @@ function Header() {
     const userRouter = () =>{
         return(
             <>
+                <li><Link to="/userProfile"> <img src={Setting} alt="" width="30" /></Link></li>
                 <li><Link to="/userProducts">Products</Link></li>
                 <li><Link to="/userPackages">Packages</Link></li>
                 <li><Link to="/view_package_reservation">Package Reservation</Link></li>

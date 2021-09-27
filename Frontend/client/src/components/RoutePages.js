@@ -24,7 +24,7 @@ import View_product from "./view_product/view_product";
  import ReservationUpdate from "./View_Reservations/reservationUpdate";
  import Package_Reservation from "./PackageReservation/PackageReservation"
  import View_Preservations from "./PackageReservation/ViewPackageReservation";
-
+import UserProfile from "./UserProfile/userProfile";
 import AddCard from "./AddCard/addCard";
 import ViewCard from "./ViewCard/viewCard";
 import UpdateCard from "./UpdateCard/updateCard";
@@ -67,6 +67,7 @@ function Pages() {
             <Route path="/updateReservation/:id" exact component={ReservationUpdate} />
             <Route path="/package_reservation/:id" exact component={Package_Reservation} />
             <Route path="/view_package_reservation" exact component={View_Preservations} />
+            <Route path="/userProfile" exact component={UserProfile} />
 
             //admin products
             <Route path="/adminProducts" exact component={Products} />
