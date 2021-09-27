@@ -18,23 +18,23 @@ router.post('/register', async (req, res) =>{
         const {name,number,address ,email, password} = req.body;
 
 
-        if(number.length != 10) 
+        if(number.length != 10)
         return res.status(400).json({msg: "phone  number must be 10 digit."})
 
         const user = await Users.findOne({email})
         if(user) return res.status(400).json({msg: "The email already exists."})
 
-        if(password.length < 6) 
+        if(password.length < 6)
             return res.status(400).json({msg: "Password is at least 6 characters long."})
 
         // Password Encryption
         const passwordHash = await bcrypt.hash(password, 10)
-       
+
         const newUser = new Users({
             name, number,address,email,password: passwordHash
         })
 
-    
+
         await newUser.save()
 
         // Then create jsonwebtoken to authentication
@@ -142,6 +142,35 @@ router.get('/logout',async (req, res) =>{
         return res.status(500).json({msg: err.message})
     }
  })
+
+
+
+
+
+router.get('/getUserById/:id',  async (req, res) =>{
+    try {
+        const  email =   req.params.id;
+        const user = await Users.findOne({email})
+        res.send(user)
+    } catch (err) {
+        return res.status(500).json({msg: err.message})
+    }
+})
+
+
+router.put('/editUser/:id',  async (req, res) =>{
+    try {
+        const {name,id,number,address}=req.body;
+        await Users.findOneAndUpdate({_id:id}, {
+            name,number,address
+        })
+        res.send({msg:'user updated successfully'})
+    } catch (err) {
+        console.log("err :"+err)
+
+    }
+})
+
 
 
 
