@@ -7,11 +7,11 @@ import decode from "jwt-decode";
 import Button from '@mui/material/Button';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 
-import Addpayment from '../addPayment/addPayment';
+
 
 function View_product() {
 
-    const [totalAmount, setTotalAmount] = useState(10)
+
 
     function handleReservation (images1,title2,price3,description3,content4) {
 
@@ -19,7 +19,7 @@ function View_product() {
         console.log(reservation);
 
         let total3 = price3* user.day;
-        setTotalAmount(total3)
+
         let total= total3;
 
         try {

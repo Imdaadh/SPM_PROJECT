@@ -22,7 +22,7 @@ function View_Preservations() {
     const [page, setPage] = useState(1)
     const [callback, setCallback] = useState(false)
     const [search, setSearch] = useState('')
-
+    const [email, setEmail] = useState('')
     const Delete_Reservation= async (id) => {
         try {
             await axios.delete(`http://localhost:5000/packagereservation/deletePackageReservation/${id}`)
@@ -36,6 +36,10 @@ function View_Preservations() {
 
 
     useEffect(() =>{
+        if(sessionStorage.token){
+            setEmail(decode(sessionStorage.token).email)
+        }
+
         const getProducts = async () => {
             const res = await axios.get(`http://localhost:5000/packagereservation/getPackageReservation`)
             setProducts(res.data.newReservation)
@@ -57,7 +61,10 @@ function View_Preservations() {
             <div className='app'>
                 {
 
-                    products.map(product => (
+                    products.map(product => {
+
+                    if(product.email==email){
+                    return(
                         <div className='details'>
                             <div className='big-img'>
                                 <img src={product.images} alt=""/>
@@ -80,7 +87,11 @@ function View_Preservations() {
                             </div>
 
                         </div>
-                    ))
+                    )
+                }
+
+
+                })
                 }
             </div>
         </>
