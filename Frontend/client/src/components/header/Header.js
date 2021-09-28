@@ -75,6 +75,7 @@ function Header() {
                 <li><Link to="/userPackagesbeforelogin">Packages</Link></li>
                 <li><Link to="/register">REGISTER</Link></li>
                 <li><Link to="/login">LOGIN</Link></li>
+                <li><Link to="/getPayments">payment</Link></li>
 
             </>
         )
