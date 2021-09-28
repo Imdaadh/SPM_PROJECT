@@ -3,7 +3,46 @@ const router = require('express').Router()
 
 const Payment = require('../models/payment')
 
+//////ahmed/////////
+class APIfeatures {
+    constructor(query, queryString){
+        this.query = query;
+        this.queryString = queryString;
+    }
+    filtering(){
+        const queryObj = {...this.queryString}
+        const excludedFields = ['page', 'sort', 'limit']
+        excludedFields.forEach(el => delete(queryObj[el]))
 
+        let queryStr = JSON.stringify(queryObj)
+        queryStr = queryStr.replace(/\b(gte|gt|lt|lte|regex)\b/g, match => '$' + match)
+        this.query.find(JSON.parse(queryStr))
+
+        return this;
+    }
+
+    sorting(){
+        if(this.queryString.sort){
+            const sortBy = this.queryString.sort.split(',').join(' ')
+            this.query = this.query.sort(sortBy)
+        }else{
+            this.query = this.query.sort('-createdAt')
+        }
+
+        return this;
+    }
+
+    paginating(){
+        const page = this.queryString.page * 1 || 1
+        const limit = this.queryString.limit * 1 || 9
+        const skip = (page - 1) * limit;
+        this.query = this.query.skip(skip).limit(limit)
+        return this;
+    }
+}
+
+
+//////ahmed ///////////
 
 
 
@@ -23,14 +62,45 @@ router.post('/addPayment', async(req,res) =>{
 })
 
 
-//get all payments
-router.get('/getPayments',async (req,res) => {
-    try{
-        const payments = await Payment.find();
-        res.json(payments);
-    }catch (e) {
-        console.log(e)
+//get all payments saajid
+// router.get('/getPayments',async (req,res) => {
+//     try{
+//
+//
+//         const payments = await Payment.find();
+//         res.json(payments);
+//     }catch (e) {
+//         console.log(e)
+//     }
+// })
+
+
+///ahmed
+// retreiving  the product details from  product Document
+router.get('/getPayments',async(req, res) =>{
+
+    try {
+
+        console.log("inside paymnet")
+
+        const features = new APIfeatures(Payment.find(), req.query)
+            .filtering().sorting().paginating()
+
+        const products = await features.query
+
+        console.log(" paymnet issss : "+products.length)
+
+        res.json({
+            status: 'success',
+            result: products.length,
+            products: products
+        })
+
+    } catch (err) {
+        return res.status(500).json({msg: err.message})
     }
+
+
 })
 
 //update
