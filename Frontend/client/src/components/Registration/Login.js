@@ -40,14 +40,14 @@ class Login extends PureComponent {
                     }else{
                         sessionStorage.setItem("token",res.data.accessToken)
                         if (res.data.role==='admin') {
-                            alert("welcome "+res.data.role)
+                            alert("Login Successful")
                             this.props.history.push('/adminProducts')
                         }else if(res.data.role==='user'){
-                            alert("welcome "+res.data.role)
+                            alert("Login Successful ")
                             this.props.history.push('/userProducts')
                         }
                         else if(res.data.role==='adminP'){
-                            alert("welcome"+res.data.role)
+                            alert("Login Successful")
                             this.props.history.push('/adminPackages')
                         }
                     }
@@ -68,7 +68,7 @@ class Login extends PureComponent {
                     <h1>LOGIN FORM </h1>
                     <form  onSubmit={this.onSubmit} style={{borderColor:"teal"}}>
                         <div className="form-group" style={{borderColor:"teal"}}>
-                            <input type="text" className="form-control"  style={{borderColor:"teal"}} placeholder="Enter Email" name="email"  value={this.state.email}  onChange={this.onChange} required={true} />
+                            <input type="email" className="form-control"  style={{borderColor:"teal"}} placeholder="Enter Email" name="email"  value={this.state.email}  onChange={this.onChange} required={true} />
                         </div>
                         <div className="form-group" style={{borderColor:"teal"}}>
                             <input type="password" className="form-control"  style={{borderColor:"teal"}} placeholder="Enter Password" name="password"  value={this.state.password}  onChange={this.onChange} required={true} />
