@@ -85,7 +85,7 @@ function Package_Reservation() {
 
                         <input type='number' onChange={onChangeInput} value={user.day} className='days'  name="day" placeholder='Enter the Number of Days'/><br />
                         <input type='date'  onChange={onChangeInput} value={user.date} className='date' name="date" placeholder='enter the date' /><br />
-                        <Link to={`/addPayment/${detailProduct._id}`}> <Button className="reserve3" endIcon={<AddCircleIcon />} onClick={()=>{handlePReservation(detailProduct.images.url,detailProduct.PackageName, detailProduct.price,detailProduct.description)}}> Reserve Package</Button></Link>
+                        <Link to={`/addPayment/${detailProduct.price*user.day}`}>  <Button className="reserve3" endIcon={<AddCircleIcon />} onClick={()=>{handlePReservation(detailProduct.images.url,detailProduct.PackageName, detailProduct.price,detailProduct.description)}}> Reserve Package</Button></Link>
                     </div>
                 </div>
 

@@ -7,14 +7,19 @@ import decode from "jwt-decode";
 import Button from '@mui/material/Button';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 
+import Addpayment from '../addPayment/addPayment';
 
 function View_product() {
+
+    const [totalAmount, setTotalAmount] = useState(10)
 
     function handleReservation (images1,title2,price3,description3,content4) {
 
         let reservation = {images:images1 ,title:title2, price:price3, description:description3, content:content4};
         console.log(reservation);
+
         let total3 = price3* user.day;
+        setTotalAmount(total3)
         let total= total3;
 
         try {
@@ -81,7 +86,8 @@ function View_product() {
 
                                 <input type='number' onChange={onChangeInput} value={user.day} className='days'  name="day" placeholder='Enter the Number of Days'/><br />
                                 <input type='date'  onChange={onChangeInput} value={user.date} className='date' name="date" placeholder='enter the date' /><br />
-                                <Link to={`/addPayment/${detailProduct._id}`}> <Button className="reserve" endIcon={<AddCircleIcon />} onClick={()=>{handleReservation(detailProduct.images.url,detailProduct.title, detailProduct.price,detailProduct.description,detailProduct.content)}}> Reserve </Button></Link>
+
+                                <Link to={`/addPayment/${detailProduct.price*user.day}}`}> <Button className="reserve" endIcon={<AddCircleIcon />} onClick={()=>{handleReservation(detailProduct.images.url,detailProduct.title, detailProduct.price,detailProduct.description,detailProduct.content)}}> Reserve </Button></Link>
                             </div>
                         </div>
 
