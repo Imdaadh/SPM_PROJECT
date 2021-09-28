@@ -72,7 +72,7 @@ function Header() {
         return(
             <>
                 <li><Link to="/">Products</Link></li>
-                <li><Link to="/userPackagesbeforelogin">Packages11111</Link></li>
+                <li><Link to="/userPackagesbeforelogin">Packages</Link></li>
                 <li><Link to="/register">REGISTER</Link></li>
                 <li><Link to="/login">LOGIN</Link></li>
 
