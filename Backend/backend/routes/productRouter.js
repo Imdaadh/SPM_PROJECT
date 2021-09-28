@@ -1,8 +1,5 @@
 const router = require('express').Router()
-
 const Products = require('../models/productModel')
-
-
 
 class APIfeatures {
     constructor(query, queryString){
@@ -10,16 +7,14 @@ class APIfeatures {
         this.queryString = queryString;
     }
     filtering(){
-       const queryObj = {...this.queryString} 
-
+       const queryObj = {...this.queryString}
        const excludedFields = ['page', 'sort', 'limit']
        excludedFields.forEach(el => delete(queryObj[el]))
-       
+
        let queryStr = JSON.stringify(queryObj)
        queryStr = queryStr.replace(/\b(gte|gt|lt|lte|regex)\b/g, match => '$' + match)
-
        this.query.find(JSON.parse(queryStr))
-      
+
        return this;
     }
 
@@ -48,14 +43,13 @@ class APIfeatures {
 
 // inserting product details to the product Document
 router.post('/addProducts',async(req, res) =>{
-
     try {
         const {product_id, title, price,description,category, images} = req.body;
-     
+
         const product = await Products.findOne({product_id})
         if(product)
             return res.status(400).json({msg: "This product already exists."})
-            
+
         const newProduct = new Products({
             product_id, title: title.toLowerCase(), price,description,category,  images
         })
@@ -90,7 +84,7 @@ router.get('/getProducts',async(req, res) =>{
             result: products.length,
             products: products
         })
-        
+
     } catch (err) {
         return res.status(500).json({msg: err.message})
     }
@@ -105,7 +99,7 @@ router.get('/getProducts',async(req, res) =>{
 // deleting the  product details from  product Document
 router.delete('/deleteProducts/:id',async(req, res) =>{
     try {
- 
+
 
         await Products.findByIdAndDelete(req.params.id)
         res.json({msg: "Deleted a Product"})
@@ -120,7 +114,7 @@ router.delete('/deleteProducts/:id',async(req, res) =>{
 
 
 
-// updating the  product details from  product Document 
+// updating the  product details from  product Document
 router.put('/updateProducts/:id',async(req, res) =>{
 
     try {

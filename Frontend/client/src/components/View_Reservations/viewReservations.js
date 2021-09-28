@@ -56,6 +56,7 @@ const ComponentToPrint = React.forwardRef((props, ref) => {
     const [page, setPage] = useState(1)
     const [callback, setCallback] = useState(false)
     const [search, setSearch] = useState('')
+    const [email, setEmail] = useState('')
 
     const Delete_Reservation= async (id) => {
         try {
@@ -71,6 +72,11 @@ const ComponentToPrint = React.forwardRef((props, ref) => {
 
 
     useEffect(() =>{
+
+        if(sessionStorage.token){
+            setEmail(decode(sessionStorage.token).email)
+        }
+
         const getProducts = async () => {
             const res = await axios.get(`http://localhost:5000/reservation/getReservation`)
             setProducts(res.data.newReservation)
@@ -100,35 +106,42 @@ const ComponentToPrint = React.forwardRef((props, ref) => {
             <div className='app' ref={ref}>
             {
 
-                products.map(product => (
-                <div className='details'>
-                    <div className='big-img'>
-                        <img src={product.images} alt=""/>
-                    </div>
-                    <div className="box">
-                        <div className='row'>
-                            <h2> {product.title} </h2>
-                            <span>${product.price}</span>
-                        </div>
+                products.map(product => {
 
-                        <p>{product.description}</p>
-                        {/*<p>{product.content}</p>*/}
-                        <p>Date: {product.date}</p>
-                        <p>Number of Days: {product.day}</p>
-                        <div className='row'>
-                            <h2>Total Payment: ${product.total} </h2>
-                        </div>
+                    if(product.email==email){
+                        return(
+                            <div className='details'>
+                                <div className='big-img'>
+                                    <img src={product.images} alt=""/>
+                                </div>
+                                <div className="box">
+                                    <div className='row'>
+                                        <h2> {product.title} </h2>
+                                        <span>${product.price}</span>
+                                    </div>
 
-                        <Button className="reserve7" endIcon={<DeleteIcon />} onClick={()=>Delete_Reservation(product._id)}> Cancel Reservation </Button>
-                        <Link to={`updateReservation/${product._id}`}> <Button endIcon={<EditIcon />} className="reserve8"> Update Reservation </Button></Link>
+                                    <p>{product.description}</p>
+                                    {/*<p>{product.content}</p>*/}
+                                    <p>Date: {product.date}</p>
+                                    <p>Number of Days: {product.day}</p>
+                                    <div className='row'>
+                                        <h2>Total Payment: ${product.total} </h2>
+                                    </div>
+
+                                    <Button className="reserve7" endIcon={<DeleteIcon />} onClick={()=>Delete_Reservation(product._id)}> Cancel Reservation </Button>
+                                    <Link to={`updateReservation/${product._id}`}> <Button endIcon={<EditIcon />} className="reserve8"> Update Reservation </Button></Link>
 
 
-                    </div>
-                    {/*<Button className="reserve8" endIcon={<SummarizeIcon />} >  Summary</Button>*/}
+                                </div>
+                                {/*<Button className="reserve8" endIcon={<SummarizeIcon />} >  Summary</Button>*/}
 
-                </div>
+                            </div>
+                         )
+                      }
 
-                ))
+
+
+            })
                 }
         </div>
 
