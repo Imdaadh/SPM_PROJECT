@@ -23,11 +23,16 @@ class CreatePayment extends Component{
 
     state = {
         cards: [],
+        totalAmount:0
 
     };
 
 
     componentDidMount() {
+
+
+
+
         axios
             .get("http://localhost:5000/card/getByCardId/61485559e9dd81c314f75d5c")
             .then((res) => {
@@ -44,6 +49,8 @@ class CreatePayment extends Component{
                 // this.setState({products:res.data.data});
             })
             .catch((err) => err.message);
+
+        // this.setState({totalAmount:this.state.params.total})
     }
 
 
@@ -83,10 +90,9 @@ class CreatePayment extends Component{
             <div>
                 <center>
                     <div className="login-page"  style={{  height: 680,borderColor:"teal"}}>
-                        <h2>Add Payment</h2>
+                        <h2>Add Payment {this.props.match.params.total}</h2>
                         <form onSubmit={this.onSubmit}>
                             <br></br>
-
 
 
 
