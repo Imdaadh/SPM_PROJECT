@@ -28,6 +28,7 @@ import UserProfile from "./UserProfile/userProfile";
 import AddCard from "./AddCard/addCard";
 import ViewCard from "./ViewCard/viewCard";
 import UpdateCard from "./UpdateCard/updateCard";
+import PackageOrders from "./orders/packageOrders";
 //include payment
 
 
@@ -56,7 +57,7 @@ function Pages() {
             <Route path="/edit_package/:id" exact component={CreatePackage } />
             {<Route path="/userPackages" exact component={UserPackages} />}
             {<Route path="/userPackagesbeforelogin" exact component={BeforeLoginPackages} />}
-
+            <Route path="/packageOrders" exact component={PackageOrders } />
 
 
             //user products
@@ -76,6 +77,9 @@ function Pages() {
             <Route path="/create_product" exact component={CreateProduct} />
             <Route path="/edit_product/:id" exact component={CreateProduct } />
             <Route path="/orderHistory" exact component={OrderHistory } />
+
+
+
 
 //sample
 

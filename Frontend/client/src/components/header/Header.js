@@ -44,7 +44,7 @@ function Header() {
             <>
                 <li><Link to="/create_package">ADD Package</Link></li>
                 <li><Link to="/adminPackages">Packages</Link></li>
-                <li><Link to="/orderHistory">ORDERS</Link></li>
+                <li><Link to="/packageOrders">ORDERS</Link></li>
                 <li><Link to="/" onClick={logoutUser}>Logout</Link></li>
 
             </>
