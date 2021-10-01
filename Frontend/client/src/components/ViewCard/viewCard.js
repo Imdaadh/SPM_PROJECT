@@ -3,6 +3,9 @@ import axios from "axios";
 import { Table } from "react-bootstrap";
 
 import {Link} from 'react-router-dom';
+import Button from '@mui/material/Button';
+import EditIcon from '@mui/icons-material/Edit';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 
 class ViewCard extends React.PureComponent {
@@ -55,7 +58,8 @@ class ViewCard extends React.PureComponent {
                     hover
                     variant="dark"
                     style={{
-                        marginLeft: 200,
+                        marginLeft: 'auto',
+                        marginRight:'auto',
                         width: 900,
                         backgroundColor: "#555555",
                         border: 6,
@@ -183,16 +187,16 @@ class ViewCard extends React.PureComponent {
                                     >
 
                                         <Link to={`/getCardUpdate/${cards._id}`}>
-                                            <button  style={{
+                                            <Button  startIcon={<EditIcon />} style={{
                                                 backgroundColor: "Green",
                                                 width: 50,
                                                 height: 40,
                                                 color: "white"
                                             }}
-                                            >Update</button>
+                                            ></Button>
                                         </Link>
 
-                                        <button style={{
+                                        <Button startIcon={<DeleteIcon />} style={{
                                             // marginLeft: 200,
                                             backgroundColor: "Red",
                                             width: 50,
@@ -200,7 +204,7 @@ class ViewCard extends React.PureComponent {
                                             color: "white",
 
                                         }}onClick={()=> this.deleteUser(cards._id)}
-                                        >Delete</button>
+                                        ></Button>
                                     </td>
 
 

@@ -59,7 +59,7 @@ function Header() {
                 <li><Link to="/userPackages">Packages</Link></li>
                 <li><Link to="/view_package_reservation">Package Reservation</Link></li>
                 <li><Link to="/viewreservations">Vehicle Reservation</Link></li>
-                <li><Link to="/addPayment">Add Payment</Link></li>
+                {/*<li><Link to="/addPayment">Add Payment</Link></li>*/}
                 <li><Link to="/getPayments">View Payments</Link></li>
                 <li><Link to="/addCardDetail">Add Card</Link></li>
                 <li><Link to="/getCardDetails">View Card</Link></li>

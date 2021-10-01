@@ -25,7 +25,7 @@ const ViewPayment = () => {
                     // <Button className="reserve12"  style={{marginBottom:-200}}>Summary</Button>
                     <div className='app2'>
                         <div className="box2">
-                            <Button className="reserve13" endIcon={<SummarizeIcon />} style={{width:300,marginLeft:-970,backgroundColor:'teal'}} >Generate Report</Button>
+                            <Button className="reserve13" endIcon={<SummarizeIcon />} style={{width:300,marginLeft:-1020,backgroundColor:'teal'}} >Generate Report</Button>
                         </div>
                     </div>
                 }
@@ -68,90 +68,112 @@ const ComponentToPrint = React.forwardRef((props, ref) => {
         getProducts()
     },[callback, search, page])
 
+    const deleteUser= async (id) => {
+        try {
+            await axios.delete(`http://localhost:5000/payment/delete/${id}`)
+            alert('Payment deleted')
+            window.location.reload(false);
+        }
+        catch(error){
+            alert(error);
+        };
+    }
+
 
     if(loading) return <div><Loading /></div>
     return (
-        <>
-            <div className="filter_menu">
-                <input type="text" value={search} placeholder="Enter your search!"
-                       onChange={e => setSearch(e.target.value.toLowerCase())} />
-            </div>
-            <div className="container" style={{ paddingTop: "30px" }}>
-                {/* <h1>report</h1> */}
-                <p></p>
-                {/*<input label="Search Country" onChange={this.onChange}/>*/}
-                <div  ref={ref}>
-                    <div className="history-page">
-
-                        <table  style={{
-                            backgroundColor: "#555555",
-                            width:1000,
-                            border: 6,
-                            marginTop:100
-                        }}>
-                            <thead>
-                            <tr>
-                                <th style={{ color: "white", backgroundColor: "black", borderColor: "black",}}>Amount</th>
-                                <th style={{ color: "white", backgroundColor: "black", borderColor: "black",}}>Card Type</th>
-                                <th style={{ color: "white", backgroundColor: "black", borderColor: "black",}}>Card Number</th>
-                                <th style={{ color: "white", backgroundColor: "black", borderColor: "black",}}>Card Name</th>
-                                <th style={{ color: "white", backgroundColor: "black", borderColor: "black",}}>CVV</th>
-                                <th style={{ color: "white", backgroundColor: "black", borderColor: "black",}}>Expire Date</th>
-                                <th style={{ color: "white", backgroundColor: "black", borderColor: "black",}}></th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            {
-                                payments.map(payments => (
+        // function deleteUser(id) {
+        //     axios.delete(`http://localhost:5000/payment/delete/${id}`)
+        //         .then(response => {
+        //             alert('Payment deleted')
+        //             window.location.reload(false);
+        //         })
+        // },
 
 
-                                    <tr key={payments._id}>
-                                        <td  style={{ color: "white",backgroundColor: "#555555",borderColor: "#555555",}}>{payments.amount}</td>
-                                        <td  style={{ color: "white",backgroundColor: "#555555",borderColor: "#555555",}}>{payments.cardType}</td>
-                                        <td  style={{ color: "white",backgroundColor: "#555555",borderColor: "#555555",}}>{payments.cardNumber}</td>
-                                        <td  style={{ color: "white",backgroundColor: "#555555",borderColor: "#555555",}}>{payments.cardName}</td>
-                                        <td  style={{ color: "white",backgroundColor: "#555555",borderColor: "#555555",}}>{payments.cvv}</td>
-                                        <td  style={{ color: "white",backgroundColor: "#555555",borderColor: "#555555",}}>{payments.expiryDate}</td>
 
-                                        <td
-                                            style={{
-                                                color: "white",
-                                                backgroundColor: "#555555",
-                                                borderColor: "#555555",
-                                            }}
-                                        >
 
-                                            <Link to={`/getPaymentUpdate/${payments._id}`}>
-                                                <button  style={{
-                                                    backgroundColor: "Green",
-                                                    width: 50,
-                                                    height: 40,
-                                                    color: "white"
+            <>
+                <div className="filter_menu">
+                    <input type="text" value={search} placeholder="Enter your search!"
+                           onChange={e => setSearch(e.target.value.toLowerCase())} />
+                </div>
+                <div className="container" style={{ paddingTop: "30px" }}>
+                    {/* <h1>report</h1> */}
+                    <p></p>
+                    {/*<input label="Search Country" onChange={this.onChange}/>*/}
+                    <div  ref={ref}>
+                        <div className="history-page">
+
+                            <table  style={{
+                                backgroundColor: "#555555",
+                                width:1000,
+                                border: 6,
+                                marginTop:100
+                            }}>
+                                <thead>
+                                <tr>
+                                    <th style={{ color: "white", backgroundColor: "black", borderColor: "black",}}>Amount</th>
+                                    {/*<th style={{ color: "white", backgroundColor: "black", borderColor: "black",}}>Card Type</th>*/}
+                                    <th style={{ color: "white", backgroundColor: "black", borderColor: "black",}}>Card Number</th>
+                                    <th style={{ color: "white", backgroundColor: "black", borderColor: "black",}}>Card Name</th>
+                                    <th style={{ color: "white", backgroundColor: "black", borderColor: "black",}}>CVV</th>
+                                    <th style={{ color: "white", backgroundColor: "black", borderColor: "black",}}>Expire Date</th>
+                                    <th style={{ color: "white", backgroundColor: "black", borderColor: "black",}}></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {
+                                    payments.map(payments => (
+
+
+                                        <tr key={payments._id}>
+                                            <td  style={{ color: "white",backgroundColor: "#555555",borderColor: "#555555",}}>{payments.amount}</td>
+                                            {/*<td  style={{ color: "white",backgroundColor: "#555555",borderColor: "#555555",}}>{payments.cardType}</td>*/}
+                                            <td  style={{ color: "white",backgroundColor: "#555555",borderColor: "#555555",}}>{payments.cardNumber}</td>
+                                            <td  style={{ color: "white",backgroundColor: "#555555",borderColor: "#555555",}}>{payments.cardName}</td>
+                                            <td  style={{ color: "white",backgroundColor: "#555555",borderColor: "#555555",}}>{payments.cvv}</td>
+                                            <td  style={{ color: "white",backgroundColor: "#555555",borderColor: "#555555",}}>{payments.expiryDate}</td>
+
+                                            <td
+                                                style={{
+                                                    color: "white",
+                                                    backgroundColor: "#555555",
+                                                    borderColor: "#555555",
                                                 }}
-                                                >Update</button>
-                                            </Link>
+                                            >
 
-                                            <button style={{
-                                                // marginLeft: 200,
-                                                backgroundColor: "Red",
-                                                width: 50,
-                                                height: 40,
-                                                color: "white",
+                                                {/*<Link to={`/getPaymentUpdate/${payments._id}`}>*/}
+                                                {/*    <button  style={{*/}
+                                                {/*        backgroundColor: "Green",*/}
+                                                {/*        width: 50,*/}
+                                                {/*        height: 40,*/}
+                                                {/*        color: "white"*/}
+                                                {/*    }}*/}
+                                                {/*    >Update</button>*/}
+                                                {/*</Link>*/}
 
-                                            }}onClick={()=> this.deleteUser(payments._id)}
-                                            >Delete</button>
-                                        </td>
+                                                {/*<button style={{*/}
+                                                {/*    // marginLeft: 200,*/}
+                                                {/*    backgroundColor: "Red",*/}
+                                                {/*    width: 50,*/}
+                                                {/*    height: 40,*/}
+                                                {/*    color: "white",*/}
 
-                                    </tr>
+                                                {/*}}onClick={()=> deleteUser(payments._id)}*/}
+                                                {/*>Delete</button>*/}
+                                            </td>
 
-                                ))
-                            }
-                            </tbody>
-                        </table>
+                                        </tr>
+
+                                    ))
+                                }
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </>
+            </>
     )
 })
 export default ViewPayment
