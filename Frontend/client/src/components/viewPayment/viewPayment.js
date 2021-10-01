@@ -25,7 +25,7 @@ const ViewPayment = () => {
                     // <Button className="reserve12"  style={{marginBottom:-200}}>Summary</Button>
                     <div className='app2'>
                         <div className="box2">
-                            <Button className="reserve13" endIcon={<SummarizeIcon />} style={{width:300,marginLeft:-1020,backgroundColor:'teal'}} >Generate Report</Button>
+                            <Button className="reserve13" endIcon={<SummarizeIcon />} style={{width:300,marginLeft:-968,backgroundColor:'teal'}} >Generate Report</Button>
                         </div>
                     </div>
                 }
@@ -98,9 +98,9 @@ const ComponentToPrint = React.forwardRef((props, ref) => {
                     <input type="text" value={search} placeholder="Enter your search!"
                            onChange={e => setSearch(e.target.value.toLowerCase())} />
                 </div>
-                <div className="container" style={{ paddingTop: "30px" }}>
+                <div className="container" style={{ paddingTop: "10px" }}>
                     {/* <h1>report</h1> */}
-                    <p></p>
+                    {/*<p></p>*/}
                     {/*<input label="Search Country" onChange={this.onChange}/>*/}
                     <div  ref={ref}>
                         <div className="history-page">
