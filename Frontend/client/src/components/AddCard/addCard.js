@@ -67,6 +67,7 @@ class AddCard extends Component{
             .then(response => {
 
                 alert('New Card has been added')
+                window.location.href="/getCardDetails"
             })
             .catch(error => {
                 console.log(error.message);

@@ -4,7 +4,7 @@ import axios from 'axios';
 
 
 const initialState = {
-    cardType:'',
+    amount:'',
     cardNumber:'',
     cardName:'',
     cvv:'',
@@ -36,7 +36,7 @@ class CreatePayment extends Component{
         axios
             .get("http://localhost:5000/card/getByCardId/61485559e9dd81c314f75d5c")
             .then((res) => {
-                this.state = {cardType:'',
+                this.state = {amount:'',
                     cardNumber:'',
                     cardName:'',
                     cvv:'',
@@ -67,6 +67,7 @@ class CreatePayment extends Component{
     onSubmit(e) {
         e.preventDefault();
         let payment = {
+            amount: this.props.match.params.total,
             cardType: this.state.cardType,
             cardNumber: this.state.cardNumber,
             cardName: this.state.cardName,
@@ -90,20 +91,20 @@ class CreatePayment extends Component{
             <div>
                 <center>
                     <div className="login-page"  style={{  height: 680,borderColor:"teal"}}>
-                        <h2>Add Payment {this.props.match.params.total}</h2>
+                        <h2> Payment </h2>
                         <form onSubmit={this.onSubmit}>
                             <br></br>
 
-
+                            <h3>Amount Payable: {this.props.match.params.total}</h3>
 
                             <input
-                                type="text"
+                                type="number"
                                 className="form-control"
                                 id="subjectName"
-                                name="cardType"
-                                required={true}
-                                placeholder="Enter Card Type"
-                                value={this.state.cardType}
+                                name="amount"
+                                required={false}
+                                placeholder="Amount"
+                                value={this.props.match.params.total}
                                 onChange={this.onChange}
                             />
 
@@ -155,6 +156,7 @@ class CreatePayment extends Component{
                                 className="form-control"
                                 id="subjectAmount"
                                 name="expiryDate"
+
                                 required={true}
                                 placeholder="Enter Expiry Date"
                                 value={this.state.expiryDate}
